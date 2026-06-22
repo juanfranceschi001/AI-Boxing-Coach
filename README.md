@@ -1,12 +1,12 @@
 # AI Boxing Coach
 
-An interactive, AI-powered web application designed to function as a personal boxing trainer. The application leverages real-time computer vision to analyze user stance and form, delivers personalized coaching feedback based on historical errors, and tracks fitness metrics via a custom metabolic calorie expenditure calculator. Built with a responsive, high-fidelity dark-themed user interface optimized for an engaging user experience.
+An interactive, AI-powered web application designed to function as a personal boxing trainer and injury-prevention tool. The application leverages real-time computer vision to analyze user stance and form, delivers personalized coaching feedback based on historical errors, and tracks fitness metrics via a custom metabolic calorie expenditure calculator. Built with a responsive, high-fidelity dark-themed user interface optimized for an engaging user experience.
 
 ## 🚀 Features
 
-* **Real-Time Form Analysis:** Integrates camera-based computer vision tracking to evaluate live boxing stances and provide instant positioning feedback.
+* **Real-Time Form Analysis & Injury Prevention:** Integrates camera-based computer vision tracking to evaluate live boxing stances and punches, providing instant feedback to prevent common training injuries like overextension (boxer's elbow), wrist collapse (boxer's fracture), and rotator cuff strains.
 * **Dynamic Calorie Calculator Engine:** Computes real-time metabolic energy expenditure using the Metabolic Equivalent of Task (MET) formula, utilizing the user's weight profile, session duration, and configured intensity level (Low, Medium, or High).
-* **Personalized Coaching Insights:** Automatically monitors and analyzes frequent posture or stance errors during a session to generate tailored coaching tips in a dedicated feedback section.
+* **Personalized Biomechanical Insights:** Automatically monitors and analyzes frequent posture or stance errors during a session to generate tailored coaching tips to maintain safe skeletal alignment under fatigue.
 * **Performance Dashboard:** Displays a comprehensive post-workout summary card detailing total duration, form accuracy percentages, and cumulative calories burned.
 * **Premium UI/UX Design:** Features a modern dark theme utilizing a sophisticated typography system (`Outfit` for display headings and `Inter` for clean UI copy) paired with an immersive introductory AI Coach tutorial interface.
 
@@ -36,7 +36,7 @@ An interactive, AI-powered web application designed to function as a personal bo
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/ai-boxing-coach.git
+   git clone https://github.com/juanfranceschi001/AI-Boxing-Coach.git
    cd ai-boxing-coach
    ```
 
@@ -55,3 +55,5 @@ An interactive, AI-powered web application designed to function as a personal bo
    ```bash
    npm run dev
    ```
+
+After pasting the updated text, commit the changes directly to the main branch with the commit message "Highlight injury prevention and biomechanical features in README".
