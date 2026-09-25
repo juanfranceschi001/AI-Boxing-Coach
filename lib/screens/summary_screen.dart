@@ -5,6 +5,7 @@ import '../models/form_issue.dart';
 import '../models/session_result.dart';
 import '../models/workout_mode.dart';
 import 'home_screen.dart';
+import '../widgets/banner_ad_widget.dart';
 
 class SummaryScreen extends StatelessWidget {
   final SessionResult result;
@@ -23,6 +24,7 @@ class SummaryScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Workout Summary')),
+      bottomNavigationBar: const BannerAdWidget(),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [

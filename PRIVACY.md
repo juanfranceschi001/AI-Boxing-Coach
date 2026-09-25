@@ -6,7 +6,7 @@ AI Boxing Coach ("the app") is developed by Juan Franceschi. This policy explain
 
 ## Summary
 
-The app does not collect, store on any server, or share any personal information. Everything happens on your device.
+Your camera video and workout data stay on your device. The app shows banner ads from Google AdMob, and AdMob may collect some device information to serve ads, as described below.
 
 ## Camera
 
@@ -16,9 +16,17 @@ The app uses your device's camera to detect your body position during workouts s
 
 Workout summaries (for example date, duration, punch count, and form notes) are saved in a local database on your device so you can see your history. This data never leaves your device. It is deleted when you uninstall the app or clear its data.
 
-## No accounts, analytics, or ads
+## Advertising
 
-The app has no user accounts, no analytics or tracking tools, and no advertising, and it does not need an internet connection.
+The app shows banner ads provided by Google AdMob on non-workout screens. To serve and measure ads, and to prevent fraud, the Google Mobile Ads SDK may collect and share with Google information such as your device's advertising ID, IP address, approximate location derived from it, device and app information, and ad interaction data. This is handled by Google under its own policies: [How Google uses information from sites or apps that use its services](https://policies.google.com/technologies/partner-sites).
+
+You can reset your advertising ID or opt out of personalized ads in your device's settings (Settings > Google > Ads, or Settings > Privacy > Ads).
+
+The app sends no camera images, video, or workout data to AdMob or anyone else.
+
+## No accounts or analytics
+
+The app has no user accounts and no analytics tools of its own.
 
 ## Children
 

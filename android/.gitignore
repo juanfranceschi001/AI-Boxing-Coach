@@ -12,3 +12,7 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# AdMob App ID (not really a secret, but kept out of git for consistency
+# with key.properties and to make it easy to reset to test IDs).
+admob.properties

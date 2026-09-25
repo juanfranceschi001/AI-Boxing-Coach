@@ -1,6 +1,6 @@
 # AI Boxing Coach
 
-A Flutter app that turns your phone's camera into a personal boxing coach. It tracks your body in real time, calls out form mistakes by voice, counts your punches, and runs a round timer with a bell. All processing happens on the device: no account, no internet connection, and no video ever leaves your phone.
+A Flutter app that turns your phone's camera into a personal boxing coach. It tracks your body in real time, calls out form mistakes by voice, counts your punches, and runs a round timer with a bell. All pose processing happens on the device: no account is needed, and no video ever leaves your phone. The app is supported by AdMob banner ads.
 
 ## Features
 
@@ -19,6 +19,7 @@ A Flutter app that turns your phone's camera into a personal boxing coach. It tr
 * **Voice cues:** `flutter_tts` (the device's built-in text-to-speech)
 * **Audio:** `audioplayers` (bundled bell sounds)
 * **Storage:** `sqflite` (local SQLite database)
+* **Ads:** `google_mobile_ads` (AdMob banner on the home, summary, and history screens; never on the live coaching screen)
 
 ## Project Structure
 
@@ -44,7 +45,7 @@ flutter pub get
 flutter run
 ```
 
-No API keys or environment variables are needed.
+No API keys or environment variables are needed. Without `android/admob.properties` (git-ignored, containing `ADMOB_APP_ID=...`), builds use Google's test AdMob App ID, and debug builds always show test ads.
 
 ### Release builds
 

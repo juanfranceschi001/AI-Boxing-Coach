@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/workout_mode.dart';
 import 'angle_select_screen.dart';
 import 'session_history_screen.dart';
+import '../widgets/banner_ad_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('AI Boxing Coach')),
+      bottomNavigationBar: const BannerAdWidget(),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(

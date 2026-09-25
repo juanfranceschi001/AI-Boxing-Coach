@@ -3,6 +3,7 @@ import '../models/session_result.dart';
 import '../models/workout_mode.dart';
 import '../services/session/session_repository.dart';
 import 'summary_screen.dart';
+import '../widgets/banner_ad_widget.dart';
 
 class SessionHistoryScreen extends StatefulWidget {
   const SessionHistoryScreen({super.key});
@@ -31,6 +32,7 @@ class _SessionHistoryScreenState extends State<SessionHistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Workout History')),
+      bottomNavigationBar: const BannerAdWidget(),
       body: FutureBuilder<List<SessionResult>>(
         future: _sessionsFuture,
         builder: (context, snapshot) {
