@@ -1,59 +1,59 @@
 # AI Boxing Coach
 
-An interactive, AI-powered web application designed to function as a personal boxing trainer and injury-prevention tool. The application leverages real-time computer vision to analyze user stance and form, delivers personalized coaching feedback based on historical errors, and tracks fitness metrics via a custom metabolic calorie expenditure calculator. Built with a responsive, high-fidelity dark-themed user interface optimized for an engaging user experience.
+A Flutter app that turns your phone's camera into a personal boxing coach. It tracks your body in real time, calls out form mistakes by voice, counts your punches, and runs a round timer with a bell. All processing happens on the device: no account, no internet connection, and no video ever leaves your phone.
 
-## 🚀 Features
+## Features
 
-* **Real-Time Form Analysis & Injury Prevention:** Integrates camera-based computer vision tracking to evaluate live boxing stances and punches, providing instant feedback to prevent common training injuries like overextension (boxer's elbow), wrist collapse (boxer's fracture), and rotator cuff strains.
-* **Dynamic Calorie Calculator Engine:** Computes real-time metabolic energy expenditure using the Metabolic Equivalent of Task (MET) formula, utilizing the user's weight profile, session duration, and configured intensity level (Low, Medium, or High).
-* **Personalized Biomechanical Insights:** Automatically monitors and analyzes frequent posture or stance errors during a session to generate tailored coaching tips to maintain safe skeletal alignment under fatigue.
-* **Performance Dashboard:** Displays a comprehensive post-workout summary card detailing total duration, form accuracy percentages, and cumulative calories burned.
-* **Premium UI/UX Design:** Features a modern dark theme utilizing a sophisticated typography system (`Outfit` for display headings and `Inter` for clean UI copy) paired with an immersive introductory AI Coach tutorial interface.
+* **Real-time form coaching:** On-device pose detection (Google ML Kit) checks your stance and guard and gives spoken cues like "Chin down", "Tuck your elbows in", "Widen your stance", and "Bend your knees".
+* **Three camera angles:** Front, left side, or right side, with a separate rule set tuned for each view.
+* **Punch counter:** Counts punches live while you work.
+* **Workout modes:** *Round Timer* (timed rounds with bell and rest breaks) or *Free / Shadow Box* (go until you stop).
+* **Session summary:** A post-workout recap of what you did well and what to work on.
+* **Workout history:** Past sessions are saved locally on the device.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-* **Frontend Framework:** React with TypeScript
-* **Styling & Design:** Tailwind CSS / Modern CSS Variables
-* **Core Logic:** Gemini API Integration (Computer Vision Stance Parsing & Dynamic Tip Generation)
-* **State Management:** React Hooks & Component Architecture
+* **Framework:** Flutter (Dart)
+* **Pose detection:** `google_mlkit_pose_detection` (runs fully on-device, free, no API key)
+* **Camera:** `camera`
+* **Voice cues:** `flutter_tts` (the device's built-in text-to-speech)
+* **Audio:** `audioplayers` (bundled bell sounds)
+* **Storage:** `sqflite` (local SQLite database)
 
-## 📂 Key Architecture & Component Structure
+## Project Structure
 
 ```text
-├── src/
-│   ├── components/
-│   │   ├── Controls.tsx          # Profile inputs (Weight & Intensity selection configurations)
-│   │   ├── SessionSummary.tsx    # End-of-session metrics dashboard and calorie card
-│   │   ├── Tutorial.tsx          # Onboarding flow and robotic proxy interface layouts
-│   │   └── ...
-│   ├── types.ts                  # Strictly typed interfaces for workout states and profiles
-│   ├── index.css                 # Custom font pairings (Outfit/Inter) and core global styles
-│   └── App.tsx                   # Core camera streams, main tracking loops, and layout shell
-├── .env.local                    # Local environment configuration
+lib/
+├── main.dart / app.dart          # Entry point and theme
+├── screens/                      # Home, mode/angle/round setup, live coaching, summary, history
+├── services/
+│   ├── pose_analysis/            # Landmark geometry, per-angle rule sets, punch counter, feedback throttling
+│   ├── audio/                    # Bell player and text-to-speech
+│   └── session/                  # Round timer, session state, local history storage
+├── models/                       # Workout mode, camera angle, form issues, round config, session results
+├── data/                         # Coaching feedback text and tips
+└── widgets/                      # Pose overlay, feedback banner, punch counter, round indicator
 ```
 
-## ⚡ Setup & Installation
+## Setup
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/juanfranceschi001/AI-Boxing-Coach.git
-   cd ai-boxing-coach
-   ```
+```bash
+git clone https://github.com/juanfranceschi001/AI-Boxing-Coach.git
+cd AI-Boxing-Coach
+flutter pub get
+flutter run
+```
 
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+No API keys or environment variables are needed.
 
-3. **Configure Environment Variables:**
-   Create a `.env.local` file in the root directory and add your API key:
-   ```env
-   VITE_GEMINI_API_KEY=your_api_key_here
-   ```
+### Release builds
 
-4. **Launch the Development Server:**
-   ```bash
-   npm run dev
-   ```
+Release signing reads `android/key.properties` (git-ignored) with `storeFile`, `storePassword`, `keyAlias`, and `keyPassword`. If the file is missing, release builds fall back to the debug key.
 
-After pasting the updated text, commit the changes directly to the main branch with the commit message "Highlight injury prevention and biomechanical features in README".
+```bash
+flutter build appbundle --release
+```
+
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md).
