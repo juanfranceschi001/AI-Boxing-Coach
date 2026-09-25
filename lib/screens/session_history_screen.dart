@@ -28,6 +28,22 @@ class _SessionHistoryScreenState extends State<SessionHistoryScreen> {
     return '$minutes:$seconds';
   }
 
+  /// e.g. "Thu, Sep 24, 10:16 PM" -- follows the device locale and its
+  /// 12/24-hour setting.
+  String _formatStartedAt(BuildContext context, DateTime startedAt) {
+    final local = startedAt.toLocal();
+    final localizations = MaterialLocalizations.of(context);
+    final date = localizations.formatMediumDate(local);
+    final time = localizations.formatTimeOfDay(
+      TimeOfDay.fromDateTime(local),
+      alwaysUse24HourFormat: MediaQuery.of(context).alwaysUse24HourFormat,
+    );
+    return '$date, $time';
+  }
+
+  String _plural(int count, String noun) =>
+      '$count ${count == 1 ? noun : '${noun}s'}';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,14 +64,14 @@ class _SessionHistoryScreenState extends State<SessionHistoryScreen> {
             itemBuilder: (context, index) {
               final session = sessions[index];
               final subtitleStat = session.mode == WorkoutMode.roundTimer
-                  ? '${session.roundsCompleted ?? 0} rounds'
-                  : '${session.punchCount ?? 0} punches';
+                  ? _plural(session.roundsCompleted ?? 0, 'round')
+                  : '${session.punchCount ?? 0} ${session.punchCount == 1 ? 'punch' : 'punches'}';
               return ListTile(
                 title: Text(
                   '${session.mode.label} • ${session.angle.label}',
                 ),
                 subtitle: Text(
-                  '${session.startedAt.toLocal()} • ${_formatDuration(session.duration)} • $subtitleStat',
+                  '${_formatStartedAt(context, session.startedAt)} • ${_formatDuration(session.duration)} • $subtitleStat',
                 ),
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
